@@ -12,7 +12,7 @@ class Virustotal():
         param= { 'resource':sha256,'apikey':apikey}
         url = self.base+"file/report"
         data=urllib.urlencode(param)
-        print data
+        print url,data
         try:
             result=urllib2.urlopen(url,data)
             jdata =json.loads(result.read())
@@ -36,4 +36,4 @@ if __name__ == "__main__":
     apikey='1f6d0b2aa12cdc6ea3ef9fc4e95483e0432d3eaaffb1be468d48fa8d4425805c'
     vt=Virustotal()
     jdata=vt.getreport(sha256,apikey)
-    print jdata
+    #print jdata
