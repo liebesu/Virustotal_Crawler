@@ -7,21 +7,30 @@ __author__ = 'liebesu'
 
 class Virustotal():
     def  __init__(self):
-        self.base='https://www.virustotal.com/vtapi/v2/'
+        self.base='https://www.virustotal.com'
     def getreport(self,sha256,apikey):
-        param= { 'resource':sha256,'apikey':apikey}
-        url = self.base+"file/report"
-        data=urllib.urlencode(param)
-        print url,data
-        try:
-            result=urllib2.urlopen(url,data)
-            jdata =json.loads(result.read())
-            return jdata
-        except:
-            time.sleep(5)
-            result = urllib2.urlopen(url,data)
-            jdata =  json.loads(result.read())
-            return jdata
+        #param= { 'resource':sha256,'apikey':apikey}
+        for i in range(3):
+            param = {
+            'first_name': 'your_first_name',
+            'last_name': 'your_last_name',
+            'username': 'autoruntest'+str(i),
+            'email': 'test' + str(i) + '@hodreams.com',
+            'password1': 'liebesuauto',
+            'password2': 'liebebsuauto',
+            }
+            url = self.base+"/en/account/signup/"
+            data=urllib.urlencode(param)
+            print url,data
+            try:
+                result=urllib2.urlopen(url,data)
+                jdata =json.loads(result.read())
+                return jdata
+            except:
+                time.sleep(5)
+                result = urllib2.urlopen(url,data)
+                jdata =  json.loads(result.read())
+                return jdata
 
 
 
