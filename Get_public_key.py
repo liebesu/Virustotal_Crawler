@@ -10,8 +10,8 @@ import re
 import cookielib
 import httplib
 import sys
-
-
+from lib.readconf import read_conf
+datebaseip,datebaseuser,datebasepsw,datebasename,datebasetable,reg_username,reg_premail,reg_password=read_conf()
 class Producer:
     def __init__(self):        
         #self.gen_token_and_cookie()
@@ -43,10 +43,8 @@ class Producer:
         conn.request(method='POST', url='/en/account/signup/',
                      body=urllib.urlencode(params), headers=self.headers)
         response = conn.getresponse()
-        if response.status == 302:
-            location = response.getheader('location', '')
-            if location == '/files':
-                print 'user', i, 'successfully created'
+        if "Welcome" in response.status:
+            print 'user', params['email'], 'successfully created'
         else:
             print '!!! error while create user', params['email'], '!!!'
         conn.close()
@@ -63,16 +61,16 @@ class Getkey:
         rc, self.response = self.M.login(username, password)
         return rc
 #create as many users as you like
-if __name__=="__main__":
-    for i in range(1, 10):
-        p = Producer()
 
-        param = {
-        'first_name': 'your_first_name',
-        'last_name': 'your_last_name',
-        'username': 'autoruntest'+str(i),
-        'email': 'test' + str(i) + '@hodreams.com',
-        'password1': 'liebesuauto',
-        'password2': 'liebesuauto',
-        }
-        p.post(param)
+for i in range(1, 10):
+    p = Producer()
+
+    param = {
+    'first_name': 'your_first_name',
+    'last_name': 'your_last_name',
+    'username': reg_username+str(i),
+    'email': reg_premail + str(i) + '@hodreams.com',
+    'password1': reg_password,
+    'password2': reg_password,
+    }
+    p.post(param)
