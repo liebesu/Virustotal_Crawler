@@ -10,8 +10,9 @@ def read_conf():
     datebasepsw=config.get("Datebase","password")
     datebasename=config.get("Datebase","databasename")
     datebasetable=config.get("Datebase","tablename")
-    reg_username=config.get("reg-info","username")
-    reg_premail=config.get("reg-info","premail")
-    reg_password=config.get("reg-info","password")
+    reg_username=config.get("reg_info","username")
+    reg_premail=config.get("reg_info","premail")
+    reg_password=config.get("reg_info","password")
+    numkey=config.get("numkey","num")
 
-    return datebaseip,datebaseuser,datebasepsw,datebasename,datebasetable,reg_username,reg_premail,reg_password
+    return datebaseip,datebaseuser,datebasepsw,datebasename,datebasetable,reg_username,reg_premail,reg_password,numkey
