@@ -3,6 +3,7 @@
     my[at]lijiejie.com    http://www.lijiejie.com
     auto create a large number of box.net accounets
 '''
+import imaplib
 
 import urllib2, urllib
 import re
@@ -51,17 +52,27 @@ class Producer:
         conn.close()
 
 class Getkey:
-    def mailactiv(self):
+    def __init__(self):
+        self.IMAP_SERVER='imap.gmail.com'
+        self.IMAP_PORT=993
+        self.M = None
+        self.respons
+        self.mailboxes = []
+    def login(self, username, password):
+        self.M = imaplib.IMAP4_SSL(self.IMAP_SERVER, self.IMAP_PORT)
+        rc, self.response = self.M.login(username, password)
+        return rc
 #create as many users as you like
-for i in range(1, 10):
-    p = Producer()
+if __name__=="__main__":
+    for i in range(1, 10):
+        p = Producer()
 
-    param = {
-    'first_name': 'your_first_name',
-    'last_name': 'your_last_name',
-    'username': 'autoruntest'+str(i),
-    'email': 'test' + str(i) + '@hodreams.com',
-    'password1': 'liebesuauto',
-    'password2': 'liebesuauto',
-    }
-    p.post(param)
+        param = {
+        'first_name': 'your_first_name',
+        'last_name': 'your_last_name',
+        'username': 'autoruntest'+str(i),
+        'email': 'test' + str(i) + '@hodreams.com',
+        'password1': 'liebesuauto',
+        'password2': 'liebesuauto',
+        }
+        p.post(param)
