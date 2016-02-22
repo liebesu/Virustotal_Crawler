@@ -50,7 +50,8 @@ class Producer:
             print '!!! error while create user', params['email'], '!!!'
         conn.close()
 
-
+class Getkey:
+    def mailactiv(self):
 #create as many users as you like
 for i in range(1, 10):
     p = Producer()
