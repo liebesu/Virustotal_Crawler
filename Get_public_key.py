@@ -5,6 +5,7 @@
 '''
 import HTMLParser
 import imaplib
+from multiprocessing import Pool
 import re
 import MySQLdb
 import urllib2, urllib
@@ -52,7 +53,6 @@ class Producer:
             cursor = db.cursor()
             insertsql='insert into '+datebasetable+ ' (Username,Email,Password) values ('+"'"+params['username']+"','"\
                       +str(params['email'])+"','"+params['password1']+"'"+')'
-            print insertsql
             cursor.execute(insertsql)
             db.commit()
             cursor.close()
@@ -72,8 +72,8 @@ class GetactURL:
         rc, self.response = self.M.login(username, password)
         self.M.select('Inbox')
 #create as many users as you like
+def mian(i):
 
-for i in range(int(numkey)):
     p = Producer()
 
     param = {
@@ -85,4 +85,10 @@ for i in range(int(numkey)):
     'password2': reg_password,
     }
     p.post(param)
+if __name__=="__main__":
+    pool=Pool(processes=1000)
+    pool.map(mian,range(int(numkey)))
+    pool.close()
+    pool.join()
+
 

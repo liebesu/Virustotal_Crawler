@@ -1,3 +1,5 @@
+from multiprocessing import Pool
+
 __author__ = 'liebesu'
 #coding=gbk
 '''
@@ -49,32 +51,20 @@ class Producer:
 
     def db_sql(self,params):
         try:
-            db = MySQLdb.connect(datebaseip,datebaseuser,datebasepsw,datebasename)
+            db = MySQLdb.connect(datebaseip,datebaseuser,datebasepsw,datebasename,cursorclass = MySQLdb.cursors.DictCursor)
             cursor = db.cursor()
-            insertsql='insert into '+datebasetable+ ' (Username,Email,Password) values ('+"'"+params['username']+"','"\
-                      +str(params['email'])+"','"+params['password1']+"'"+')'
-            print insertsql
-            cursor.execute(insertsql)
+            sql='select * from '+datebasetable
+            cursor.execute(sql)
+            data = cursor.fetchall()
             db.commit()
             cursor.close()
             db.close()
         except Exception as e:
             print e
 
-class GetactURL:
-    def __init__(self):
-        self.IMAP_SERVER='imap.gmail.com'
-        self.IMAP_PORT=993
-        self.M = None
-        self.respons
-        self.mailboxes = []
-    def login(self, username, password):
-        self.M = imaplib.IMAP4_SSL(self.IMAP_SERVER, self.IMAP_PORT)
-        rc, self.response = self.M.login(username, password)
-        self.M.select('Inbox')
-#create as many users as you like
 
-for i in range(int(numkey)):
+
+def mian(i):
     p = Producer()
 
     param = {
@@ -83,5 +73,7 @@ for i in range(int(numkey)):
     'password': reg_password,
     }
     p.post(param)
-
+if __name__=="__main__":
+    pool=Pool()
+    pool
 
