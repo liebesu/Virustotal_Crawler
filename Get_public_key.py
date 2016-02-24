@@ -11,6 +11,7 @@ import MySQLdb
 import urllib2, urllib
 import httplib
 import BeautifulSoup
+import time
 from lib.readconf import read_conf
 datebaseip,datebaseuser,datebasepsw,datebasename,datebasetable,reg_username,reg_premail,reg_password,numkey=read_conf()
 class Producer:
@@ -28,24 +29,46 @@ class Producer:
 
     def post(self, params):
         print 'create user', params['email']
-        conn = httplib.HTTPSConnection("www.virustotal.com")
-        conn.request(method='POST', url='/en/account/signup/',
-                     body=urllib.urlencode(params), headers=self.headers)
-        response = conn.getresponse()
-        HTML=response.read()
-        #<ul class="errorlist"><li>
-        error=re.search('<ul\s+?class="errorlist"><li>(?P<errorlist>.+?)</li></ul>',HTML)
-        if error:
-            error1=error.group("errorlist")
-            print error1
-        else:
-            print "creat Scucess:",params['email']
-            self.db_sql(params)
-        '''if "Welcome to the VirusTotal community" in str(response.read):
-            print 'user', params['email'], 'successfully created'
-        else:
-            print '!!! error while create user', params['email'], '!!!'''''
-        conn.close()
+        try:
+            conn = httplib.HTTPSConnection("www.virustotal.com")
+            conn.request(method='POST', url='/en/account/signup/',
+                         body=urllib.urlencode(params), headers=self.headers)
+            response = conn.getresponse()
+            HTML=response.read()
+            #<ul class="errorlist"><li>
+            error=re.search('<ul\s+?class="errorlist"><li>(?P<errorlist>.+?)</li></ul>',HTML)
+            if error:
+                error1=error.group("errorlist")
+                print error1
+            else:
+                print "creat Scucess:",params['email']
+                self.db_sql(params)
+            '''if "Welcome to the VirusTotal community" in str(response.read):
+                print 'user', params['email'], 'successfully created'
+            else:
+                print '!!! error while create user', params['email'], '!!!'''''
+            conn.close()
+        except:
+            time.sleep(5)
+            conn = httplib.HTTPSConnection("www.virustotal.com")
+            conn.request(method='POST', url='/en/account/signup/',
+                         body=urllib.urlencode(params), headers=self.headers)
+            response = conn.getresponse()
+            HTML=response.read()
+            #<ul class="errorlist"><li>
+            error=re.search('<ul\s+?class="errorlist"><li>(?P<errorlist>.+?)</li></ul>',HTML)
+            if error:
+                error1=error.group("errorlist")
+                print error1
+            else:
+                print "creat Scucess:",params['email']
+                self.db_sql(params)
+            '''if "Welcome to the VirusTotal community" in str(response.read):
+                print 'user', params['email'], 'successfully created'
+            else:
+                print '!!! error while create user', params['email'], '!!!'''''
+            conn.close()
+
 
     def db_sql(self,params):
         try:
