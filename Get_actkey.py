@@ -2,12 +2,9 @@ from multiprocessing import Pool
 
 __author__ = 'liebesu'
 #coding=gbk
-'''
-    my[at]lijiejie.com    http://www.lijiejie.com
-    auto create a large number of box.net accounets
-'''
 import HTMLParser
 import imaplib
+import MySQLdb.cursors
 import re
 import MySQLdb
 import urllib2, urllib
@@ -29,51 +26,67 @@ class Producer:
     #generate request token and string format cookie
 
     def post(self, params):
-        print 'create user', params['email']
+
         conn = httplib.HTTPSConnection("www.virustotal.com")
         conn.request(method='POST', url='/en/account/signin/',
                      body=urllib.urlencode(params), headers=self.headers)
         response = conn.getresponse()
         HTML=response.read()
+        print HTML
         #<ul class="errorlist"><li>
         error=re.search('<ul\s+?class="errorlist"><li>(?P<errorlist>.+?)</li></ul>',HTML)
         if error:
             error1=error.group("errorlist")
             print error1
         else:
-            print "creat Scucess:",params['email']
-            self.db_sql(params)
-        '''if "Welcome to the VirusTotal community" in str(response.read):
-            print 'user', params['email'], 'successfully created'
-        else:
-            print '!!! error while create user', params['email'], '!!!'''''
+            print "login Scucess"
+
+        url='/en/user/'+params['username']+'/apikey'
+        print url
+        conn.request(method='GET', url=url,
+                      headers=self.headers)
+        response = conn.getresponse()
+        print response.read()
         conn.close()
 
-    def db_sql(self,params):
-        try:
-            db = MySQLdb.connect(datebaseip,datebaseuser,datebasepsw,datebasename,cursorclass = MySQLdb.cursors.DictCursor)
-            cursor = db.cursor()
-            sql='select * from '+datebasetable
-            cursor.execute(sql)
-            data = cursor.fetchall()
-            db.commit()
-            cursor.close()
-            db.close()
-        except Exception as e:
-            print e
+def db_sql(id):
+    '''try:'''
+
+    db = MySQLdb.connect(host=datebaseip,user=datebaseuser,passwd=datebasepsw,db=datebasename,port=3306)
+    cursor = db.cursor(cursorclass = MySQLdb.cursors.DictCursor)
+    sql='select Username,Email,Password from '+datebasetable +' where Id='+str(id)
+    cursor.execute(sql)
+    data = cursor.fetchall()
+    db.commit()
+    cursor.close()
+    db.close()
+    for data1 in data:
+        return data1
+
+    '''except:
+        print Exception
+        cursor.close()
+        db.close()'''
 
 
 
-def mian(i):
+def post(i):
+    data=db_sql(i)
     p = Producer()
-
+    print data['Username']
+    print data['Password']
+    '''param = {
+    'username': data['Username'],
+    'password': data['Password'],
+    }'''
     param = {
-    'username': reg_username+str(i),
-    'email': reg_premail + str(i) + '@hodreams.com',
-    'password': reg_password,
+    'username': 'polydata123',
+    'password': 'polydata',
     }
     p.post(param)
 if __name__=="__main__":
-    pool=Pool()
-    pool
+    pool=Pool(processes=1)
+    pool.map(post,range(1,2))
+    pool.close()
+    pool.join()
 
