@@ -41,12 +41,14 @@ class Producer:
         else:
             print "login Scucess"
 
-        url='/en/user/'+params['username']+'/apikey'
+        url='https://www.virustotal.com/en/user/'+params['username']+'/apikey'
         print url
-        conn.request(method='GET', url=url,
-                      headers=self.headers)
-        response = conn.getresponse()
-        print response.read()
+        request=urllib2.Request(url)
+        resp=urllib2.urlopen(url)
+        test=open('html','w')
+        test.write(resp.read())
+        test.close()
+
         conn.close()
 
 def db_sql(id):
