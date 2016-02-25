@@ -1,38 +1,51 @@
-from multiprocessing import Pool
-
-__author__ = 'liebesu'
-#coding=gbk
-import HTMLParser
-import imaplib
-import MySQLdb.cursors
-import re
-import MySQLdb
-import urllib2, urllib
+import cookielib
 import httplib
-import BeautifulSoup
+from multiprocessing import Pool
+#import MySQLdb.cursors
+import re
+#import MySQLdb
+import urllib2, urllib
+import sys
 from lib.readconf import read_conf
 datebaseip,datebaseuser,datebasepsw,datebasename,datebasetable,reg_username,reg_premail,reg_password,numkey=read_conf()
+cookies = list()
 class Producer:
     def __init__(self):
-        #self.gen_token_and_cookie()
         self.headers = {
            'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.95 Safari/537.36',
            'Origin': 'https://www.virustotal.com',
            'Referer': 'https://www.virustotal.com/en/',
            'Content-Type': 'application/x-www-form-urlencoded',
-
         }
 
     #generate request token and string format cookie
+    def gen_token_and_cookie(self):
+        try:
+            cookie = cookielib.CookieJar()
+            opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie))
+            urllib2.install_opener(opener)
+            html_doc = urllib2.urlopen('https://www.virustotal.com/en/').read()
+            print html_doc
+            self.request_token = re.search("csrfmiddlewaretoken'(.*?)'", html_doc).group(1)
+            lst_cookie = ['%s=%s' % (c.name, c.value) for c in cookie]
+            self.str_cookie = '; '.join(lst_cookie)
+            #print self.str_cookie
+        except Exception,e:
+            print 'fail to get request token or cookie:', e
 
     def post(self, params):
-
-        conn = httplib.HTTPSConnection("www.virustotal.com")
-        conn.request(method='POST', url='/en/account/signin/',
+        cookie = cookielib.CookieJar()
+        cookie_handler = urllib2.HTTPCookieProcessor(cookie)
+        #conn = httplib.HTTPSConnection("www.virustotal.com")
+        req=conn.request(method='POST', url='/en/account/signin/',
                      body=urllib.urlencode(params), headers=self.headers)
+        opener = urllib2.build_opener(cookie_handler)
+        urllib2.install_opener(opener)
+        response = opener.open(req)
         response = conn.getresponse()
+        '''if response.code==302:
+            print "logingingging"'''
         HTML=response.read()
-        print HTML
         #<ul class="errorlist"><li>
         error=re.search('<ul\s+?class="errorlist"><li>(?P<errorlist>.+?)</li></ul>',HTML)
         if error:
@@ -40,17 +53,20 @@ class Producer:
             print error1
         else:
             print "login Scucess"
-
-        url='https://www.virustotal.com/en/user/'+params['username']+'/apikey'
-        print url
-        request=urllib2.Request(url)
-        resp=urllib2.urlopen(url)
-        test=open('html','w')
-        test.write(resp.read())
-        test.close()
-
-        conn.close()
-
+        #print HTML
+        url='/en/user/'+params['username']+'/apikey/'
+        conn = httplib.HTTPSConnection("www.virustotal.com")
+        conn.request(method='GET', url=url,
+                      headers=self.headers)
+        response = conn.getresponse()
+        print response.read()
+        '''conn= httplib.HTTPConnection("www.virustotal.com", 80)
+        conn.request("GET","https://www.virustotal.com/en/user/"+params['username']+"/apikey/","",self.headers)
+        resp=conn.getresponse()
+        print resp.read()
+        a=open("resp","w")
+        a.write(resp.read())
+        a.close()'''
 def db_sql(id):
     '''try:'''
 
@@ -72,16 +88,18 @@ def db_sql(id):
 
 
 
+
 def post(i):
-    data=db_sql(i)
+    #data=db_sql(i)
     p = Producer()
-    print data['Username']
-    print data['Password']
+    #print data['Username']
+    #print data['Password']
     '''param = {
     'username': data['Username'],
     'password': data['Password'],
     }'''
     param = {
+    'response_format': 'json',
     'username': 'polydata123',
     'password': 'polydata',
     }
