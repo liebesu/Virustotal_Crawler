@@ -36,7 +36,7 @@ class Producer:
     def post(self, params):
         cookie = cookielib.CookieJar()
         cookie_handler = urllib2.HTTPCookieProcessor(cookie)
-        #conn = httplib.HTTPSConnection("www.virustotal.com")
+        conn = httplib.HTTPSConnection("www.virustotal.com")
         req=conn.request(method='POST', url='/en/account/signin/',
                      body=urllib.urlencode(params), headers=self.headers)
         opener = urllib2.build_opener(cookie_handler)
@@ -60,13 +60,13 @@ class Producer:
                       headers=self.headers)
         response = conn.getresponse()
         print response.read()
-        '''conn= httplib.HTTPConnection("www.virustotal.com", 80)
-        conn.request("GET","https://www.virustotal.com/en/user/"+params['username']+"/apikey/","",self.headers)
-        resp=conn.getresponse()
-        print resp.read()
+
+        rep=urllib2.urlopen("https://www.virustotal.com/en/user/"+params['username']+"/apikey/")
+        resp=rep.read()
+        print resp
         a=open("resp","w")
-        a.write(resp.read())
-        a.close()'''
+        a.write(resp)
+        a.close()
 def db_sql(id):
     '''try:'''
 
@@ -99,14 +99,16 @@ def post(i):
     'password': data['Password'],
     }'''
     param = {
+     'next':'/en/',
     'response_format': 'json',
     'username': 'polydata123',
     'password': 'polydata',
     }
     p.post(param)
 if __name__=="__main__":
-    pool=Pool(processes=1)
+   ''' pool=Pool(processes=1)
     pool.map(post,range(1,2))
     pool.close()
-    pool.join()
+    pool.join()'''
+   post(1)
 

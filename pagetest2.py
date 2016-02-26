@@ -26,9 +26,9 @@ print result
 # 登录参数设置
 lgurl = 'https://www.virustotal.com'
 once = result
-data = {'u':username, 'p':password, 'csrfmiddlewaretoken':once,'signin':'true'}
+data = {'u':username, 'p':password, 'next':'/en/','response_format':'json'}
 data = urllib.urlencode(data)
-hdr = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.94 Safari/537.36', 'Referer':'https://www.virustotal.com', 'Host':'v2ex.com'}
+hdr = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36', 'Referer':'https://www.virustotal.com/'}
 conn = httplib.HTTPSConnection("www.virustotal.com")
 req = conn.request(method='POST', url='/en/account/signin/', body=urllib.urlencode(data), headers = hdr)
 opener = urllib2.build_opener(cookie_hanler)
