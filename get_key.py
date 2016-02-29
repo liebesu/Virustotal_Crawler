@@ -22,7 +22,6 @@ def vtpost(param):
         r=s.get(apiurl,allow_redirects=False)
         if r.status_code == 200:
             page=r.text.encode('ascii', 'ignore')
-            print page
             key=re.search(r'<center>(.+?)</center>',page)
             print key
             key=key.group().replace('<center>','').replace('</center>','')
@@ -30,7 +29,6 @@ def vtpost(param):
             db = MySQLdb.connect(host=datebaseip,user=datebaseuser,passwd=datebasepsw,db=datebasename,port=3306)
             cursor = db.cursor(cursorclass = MySQLdb.cursors.DictCursor)
             updatesql="update  "+datebasetable+" set VTKey = '"+key+"' where Username='"+param['username']+"'"
-            print updatesql
             cursor.execute(updatesql)
             db.commit()
             cursor.close()
@@ -41,15 +39,17 @@ def db_sql(id):
 
     db = MySQLdb.connect(host=datebaseip,user=datebaseuser,passwd=datebasepsw,db=datebasename,port=3306)
     cursor = db.cursor(cursorclass = MySQLdb.cursors.DictCursor)
-    sql='select Username,Email,Password from '+datebasetable +' where Id='+str(id)
+    sql='select Username,Email,Password from '+datebasetable +' where Id='+str(id)+" and VTkey is null"
     cursor.execute(sql)
     data = cursor.fetchall()
     db.commit()
     cursor.close()
     db.close()
     for data1 in data:
-        return data1
-        print data1
+        if data1 :
+            return data1
+
+
 
 def post(i):
     data=db_sql(i)
