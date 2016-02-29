@@ -1,0 +1,619 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>
+    My API key - VirusTotal
+  </title>
+
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Pragma" content="no-store">
+  <meta http-equiv="Expires" content="-1">
+  <meta name="keywords"
+        content="virustotal, antivirus, infected, free, scan, online, malware,
+        malicious, scanner">
+
+  <meta name="description"
+        content="
+        
+All the information relative to your VirusTotal API key and its consumption.
+">
+
+  <link rel="shortcut icon" href="https://virustotalcloud.appspot.com/static/img/favicon.ico">
+  <link rel="icon" href="https://virustotalcloud.appspot.com/static/img/favicon.ico" type="image/x-icon">
+
+  <style type="text/css">
+    .ltr {
+      direction: ltr !important;
+      text-align: left !important;
+    }
+    .ltr th, .ltr td {
+      direction: ltr !important;
+      text-align: left !important;
+    }
+  </style>
+
+
+  <link rel="stylesheet"
+        type="text/css"
+        href="https://virustotalcloud.appspot.com/static/css/bootstrap.min.css?20150630">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+  </script>
+  <script type="text/javascript">
+    if (typeof jQuery == 'undefined'){
+      document.write(unescape("%3Cscript src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js' type='text/javascript'%3E%3C/script%3E"));
+    }
+  </script>
+  <script src="https://virustotalcloud.appspot.com/static/js/bootmin-2013092601.js"></script>
+  <script src="https://virustotalcloud.appspot.com/static/js/base.min-2013121902.js"></script>
+
+  
+<style>
+  table tr td:nth-child(1) {
+    width:200px;
+  }
+</style>
+
+
+  <script type="text/javascript" async>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-27433547-2']);
+    _gaq.push(['_setDomainName', '.virustotal.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ?
+                'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+</head>
+
+<body >
+  <div class="wrapper">
+    <div id="cookies-disabled-alert" class="alert center hide"
+         style="margin: 55px auto 0; width: 600px;">
+      <a class="close" data-dismiss="alert"></a>
+      <strong>Cookies are disabled!</strong>
+      This site requires cookies to be enabled to work properly 
+    </div>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          
+
+  
+<ul class="nav">
+  <li id="mnu-home">
+		<a href="/en/" alt="home" title="Home"><i class="icon-home icon-white" alt="home" title="Home"></i></a>
+	</li>
+  <li id="mnu-community">
+  	<a href="/en/community/">Community</a>
+  </li>
+  <li id="mnu-statistics">
+  	<a href="/en/statistics/">Statistics</a>
+  </li>
+  <li id="mnu-documentation" class="dropdown">
+  	<a href="/en/documentation/">Documentation</a>
+  </li>
+  <li id="mnu-faq">
+  	<a href="/en/faq/">FAQ</a>
+  </li>
+  <li id="mnu-about">
+  	<a href="/en/about/">About</a>
+  </li>
+</ul>
+
+
+  <ul class="nav pull-right">
+
+  
+    <li id="mnu-signout" class="dropdown">
+
+      <div style="width:24px; height:24px; float:left; margin: 8px 0px 6px 0px; border-radius:3px;">
+        <img height="24"
+             width="24"
+             src="https://virustotalcloud.appspot.com/en/user/polydata123/avatar/">
+      </div>
+
+      <a id="mnu-user-name" style="float:left;"
+         class="dropdown-toggle" href="#">
+        polydata123
+      </a>
+
+      <ul class="dropdown-menu">
+        <li>
+          <a id="mnu-mysubmissions"
+             href="/en/user/polydata123/submissions/">
+            <i class="icon-cloud-upload"></i> My submissions
+          </a>
+        </li>
+        
+        <li>
+          <a id="mnu-profile"
+             href="/en/user/polydata123/">
+            <i class="icon-user"></i> Profile
+          </a>
+        </li>
+        <li>
+          <a id="mnu-settings"
+             href="/en/account/settings/">
+            <i class="icon-cogs"></i> Settings
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a id="mnu-myapikey"
+             href="/en/user/polydata123/apikey/">
+            <i class="icon-key"></i> My API key
+          </a>
+        </li>
+        <li class="divider"></li>
+        
+        <li>
+          <a href="/en/account/signout/">
+            <i class="icon-reply"></i> Sign out
+          </a>
+        </li>
+      </ul>
+    </li>
+  
+  </ul>
+
+  
+
+<ul class="nav pull-right">
+  <li id="mnu-language" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      
+      
+      <i class="icon-flag"></i> English
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <div class="row-fluid" style="width: 300px;">
+          <ul class="unstyled span6">
+            <li><a class="set-language" href="/ca/user/polydata123/apikey/">Catal</a></li>
+            <li><a class="set-language" href="/da/user/polydata123/apikey/">Dansk</a></li>
+            <li><a class="set-language" href="/de/user/polydata123/apikey/">Deutsch</a></li>
+            <li><a class="set-language" href="/en/user/polydata123/apikey/">English</a></li>
+            <li><a class="set-language" href="/es/user/polydata123/apikey/">Espaol</a></li>
+            <li><a class="set-language" href="/fr/user/polydata123/apikey/">Franais</a></li>
+            <li><a class="set-language" href="/hr/user/polydata123/apikey/">Hrvatski</a></li>
+            <li><a class="set-language" href="/it/user/polydata123/apikey/">Italiano</a></li>
+            <li><a class="set-language" href="/hu/user/polydata123/apikey/">Magyar</a></li>
+            <li><a class="set-language" href="/nl/user/polydata123/apikey/">Nederlands</a></li>
+            <li><a class="set-language" href="/nb/user/polydata123/apikey/">Norsk</a></li>
+            <li><a class="set-language" href="/pt/user/polydata123/apikey/">Portugus</a></li>
+            <li><a class="set-language" href="/pl/user/polydata123/apikey/">Polski</a></li>
+            <li><a class="set-language" href="/sk/user/polydata123/apikey/">Slovenina</a></li>
+          </ul>
+          <ul class="unstyled span6">
+            <li><a class="set-language" href="/uk/user/polydata123/apikey/"></a></li>
+            <li><a class="set-language" href="/vi/user/polydata123/apikey/">Ting Vit</a></li>
+            <li><a class="set-language" href="/tr/user/polydata123/apikey/">Trke</a></li>
+            <li><a class="set-language" href="/ru/user/polydata123/apikey/"></a></li>
+            <li><a class="set-language" href="/sr/user/polydata123/apikey/"></a></li>
+            <li><a class="set-language" href="/bg/user/polydata123/apikey/"> </a></li>
+            <li><a class="set-language" href="/he/user/polydata123/apikey/"></a></li>
+            <li><a class="set-language" href="/ka/user/polydata123/apikey/"></a></li>
+            <li><a class="set-language" href="/ar/user/polydata123/apikey/"> </a></li>
+            <li><a class="set-language" href="/fa/user/polydata123/apikey/"></a></li>
+            <li><a class="set-language" href="/zh-cn/user/polydata123/apikey/"></a></li>
+            <li><a class="set-language" href="/zh-tw/user/polydata123/apikey/"></a></li>
+            <li><a class="set-language" href="/ja/user/polydata123/apikey/"></a></li>
+            <li><a class="set-language" href="/ko/user/polydata123/apikey/"></a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+
+
+        </div>
+      </div>
+    </div>
+
+    
+<script>
+
+</script>
+
+<div class="container" style="padding:40px 0">
+
+  <div class="clearfix">
+    <div class="margin-top-2 pull-left">
+      <a href="/en/">
+        <img src="https://virustotalcloud.appspot.com/static/img/logo-small.png" alt="VirusTotal">
+      </a>
+    </div>
+    <div class="margin-top-2 pull-right">
+      <ul class="nav nav-pills" >
+        <li class="active"><a href="#">
+          <i class="icon-key"></i> My API key</a>
+        </li>
+        <li><a href="/en/user/d66d2fca892d08c49db5a569afd824ed4ecb568fc38d0921c7bd9630caa1a06b/apikey/consumption/">
+          <i class="icon-bar-chart"></i> API Consumption</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="margin-top-2">
+
+    <div class="page-header">
+      <h1>My API Key</h1>
+    </div>
+
+    
+    <h3>Basic information</h3>
+
+    <p>
+      This is your personal key, do not disclose it to anyone
+      that you do not trust, do not embed it in scripts or software from which
+      it can be easily retrieved if you care about its confidentiality.
+    </p>
+
+    <pre><center>d66d2fca892d08c49db5a569afd824ed4ecb568fc38d0921c7bd9630caa1a06b</center></pre>
+
+    
+    <p>
+      It is a <strong>public API key</strong>, you may learn more about its
+      functionality in the <a target="_blank" href="/en/documentation/public-api/">public API documentation</a>.
+      Should you need to perform advanced searches, bulk file or URL submissions
+      or should you need a higher request throughput, there is a private VirusTotal
+      API that may suit your needs. This API returns much more information about
+      the samples/URLs/domains/etc. than the public one and allows you to download
+      malware for further scrutiny. The private API also allows you to perform reverse
+      lookups that take you from characteristics (detection rates, file types, binary content,
+      behavioural patterns, etc.) to a list of samples matching your search criteria.
+      <br/><br/>
+      <a class="btn btn-warning text-bold" target="_blank" href="/en/about/contact/">Request a private API key</a>
+    </p>
+    
+
+    <h3>Settings</h3>
+
+    <p>
+      The following table is a summary your API key's properties.
+    </p>
+
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Parameter</th><th>Setting</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="error">
+          <td>Privileges</td>
+          <td>
+            public key
+          </td>
+        </tr>
+        <tr>
+          <td>Request rate</td><td>4 requests/minute</td>
+        </tr>
+        <tr>
+          <td>Daily quota</td><td>5760 requests/day</td>
+        </tr>
+        <tr>
+          <td>Monthly quota</td><td>178560 requests/month</td>
+        </tr>
+        <tr>
+          <td>Status</td>
+          <td>
+            Key enabled</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      When considering API quotas, <strong>an API request is not equivalent to an HTTP request</strong>.
+      This concept designates a single item lookup in the VirusTotal dataset. Therefore, if you were to
+      make one single batch HTTP request asking for 10 hashes, that would count as 10 API requests. Similar
+      counting takes place for other items such as URLs, domains or IP addresses.
+    </p>
+
+    <h3>Usage restrictions</h3>
+
+    
+    <ul>
+      <li>
+        The public API can only be used for non-commercial purposes, always with the idea of helping
+        the community in mind.
+      </li>
+      <li>
+        You must make sure you comply with our
+        <a target="_blank" href="/en/about/best-practices/">Best Practices</a>,
+        pay special attention to the fact that VirusTotal should not be used for
+        antivirus comparatives.
+      </li>
+      <li>
+        Any kind of usage is always bound by our
+        <a target="_blank" href="/en/about/terms-of-service/">Terms of Service</a>.
+      </li>
+      <li>
+        In no event shall you issue any public statement, press release, or use VirusTotal's logo, name
+        or trademark on any customer list or in any other manner without our prior written consent in
+        each instance.
+      </li>
+    </ul>
+    
+    
+    <p>
+      If in doubt, please do not hesitate to <a href="/en/about/contact/">contact us</a> with your
+      particular use case in order to make sure that it is compliant with our terms.
+    </p>
+
+    <h3>Public API vs. Private API</h3>
+
+    <p>
+      The private API has many advantages over its public version, namely the ability to retrieve
+      far more information on a given threat, its uncapped request rate, malware downloads, advanced
+      searches, etc. You may learn more about these differences in the pertinent
+      <a target="_blank" href="/en/faq/#virustotal-api">FAQ section</a>.
+    </p>
+
+  </div>
+</div>
+
+
+    <div class="push"></div>
+  </div>
+
+  <div class="footer center">
+    <a target="_blank" href="http://blog.virustotal.com">
+      <i class="icon-rss"></i> Blog</a> |
+    <a target="_blank" href="http://twitter.com/virustotal">
+      <i class="icon-twitter"></i> Twitter</a> |
+    <a href="/en/about/contact/" alt="Contact">
+      <i class="icon-envelope-alt"></i> <span class="contact"></span>
+    </a> |
+    <a target="_blank" href="http://groups.google.com/forum/#!forum/virustotal">
+      <i class="icon-group"></i> Google groups</a> |
+    <a href="/en/about/terms-of-service/">
+      <i class="icon-legal"></i>  ToS</a> |
+    <a href="/en/about/privacy/">
+      <i class="icon-lock"></i>  Privacy policy</a>
+  </div>
+
+  
+<div id="dlg-password-reset" class="modal hide">
+  
+
+<div class="modal-header">
+  <a class="close" href="/en/"></a>
+  <h3>Recover your password</h3>
+</div>
+
+<div class="modal-body">
+  <p style="margin-bottom:20px">
+    Enter the email address associated to your VirusTotal Community account and we'll send you a message so you can setup a new password.
+  </p>
+
+  <form id="frm-password-reset" method="post" class="form-horizontal"
+        action="/en/account/reset-password/">
+    <div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='d2ac05fa64797e7d220e477e3144c796' /></div>
+    <fieldset>
+      <div class="control-group">
+        <label class="control-label" for="email">
+          Email:
+        </label>
+        <div class="controls">
+          <input type="text" id="email" name="email" class="input-xlarge"
+                 value="">
+          <div style="width:300px">
+            
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <img width="16" height="16" class="loading hide" alt="loading"
+       src="https://virustotalcloud.appspot.com/static/img/wait.gif" style="padding-top:7px; float:left"/>
+
+  <a id="btn-recover" class="btn btn-primary"
+     href="javascript:resetPassword()">
+    Recover password
+  </a>
+
+  <a class="btn cancel secondary" href="/en/">
+    Cancel
+  </a>
+</div>
+</div>
+
+<div id="dlg-join" class="modal hide">
+  
+
+<div class="modal-header">
+  <a class="close" href="/en/"></a>
+  <h3>Join VirusTotal Community</h3>
+</div>
+
+<div class="modal-body">
+
+  <p style="margin-bottom:14px">
+     Interact with other VirusTotal users and have an active voice when fighting today's Internet threats.
+    <a href="/en/documentation/virustotal-community/">
+      Find out more about VirusTotal Community.
+    </a>
+  </p>
+
+  <form id="frm-join" method="post" class="form-horizontal"
+        action="/en/account/signup/">
+    <fieldset style="margin:0">
+
+      <div class="control-group">
+        <label class="control-label" for="first_name">
+          First name
+        </label>
+        <div class="controls">
+          <input type="text" id="first_name" name="first_name"
+                 class="input-xlarge" value="">
+          
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="last_name">
+          Last name
+        </label>
+        <div class="controls">
+          <input type="text" id="last_name" name="last_name"
+                 class="input-xlarge" value="">
+          
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="username">
+          Username
+        </label>
+        <div class="controls">
+            <input type="text" id="username" name="username"
+                  class="input-xlarge" value="">
+            <span class="required-field">*</span>
+            
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="email">
+          Email
+        </label>
+        <div class="controls">
+          <input type="text" id="email" name="email" class="input-xlarge"
+                 value="">
+          <span class="required-field">*</span>
+          
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="password">
+          Password
+        </label>
+        <div class="controls">
+          <input type="password" id="password1" name="password1"
+                 class="input-xlarge" value="">
+          <span class="required-field">*</span>
+          
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="password2">
+          Confirm password
+        </label>
+        <div class="controls">
+          <input type="password" id="password2" name="password2"
+                 class="input-xlarge" value="">
+          <span class="required-field">*</span>
+        </div>
+      </div>
+
+      <span class="required-field margin-left-15">*</span>
+      Required field
+
+    </fieldset>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <img width="16" height="16" class="loading hide pull-left margin-top-1"
+       alt="loading" src="https://virustotalcloud.appspot.com/static/img/wait.gif"/>
+  <a class="btn cancel" href="/en/">
+    Cancel
+  </a>
+  <a id="btn-join" class="btn btn-primary" href="javascript:signup()">
+    Sign up
+  </a>
+</div>
+</div>
+
+<div id="dlg-signin" class="modal hide">
+  
+
+<div class="modal-header">
+  <a class="close" href="/en/"></a>
+  <h3>Sign in</h3>
+</div>
+<div class="modal-body">
+
+  <div class="margin-left-3 margin-bottom-2">
+    
+  </div>
+
+  <form id="frm-signin" method="post" class="form-horizontal"
+        action="/en/account/signin/">
+    <div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='d2ac05fa64797e7d220e477e3144c796' /></div>
+    <div class="dlg-signin-content">
+      <fieldset>
+        <div class="control-group">
+          <label class="control-label" for="username">
+            Username or email
+          </label>
+          <div class="controls">
+            <input type="text" class="input-xlarge" id="username"
+                   name="username" value="">
+            
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="password">
+            Password
+          </label>
+          <div class="controls">
+            <input type="password" class="input-xlarge" id="password"
+                   name="password">
+            
+          </div>
+        </div>
+          <a href="#" class="margin-left-15" id="lnk-password-reset">
+            Forgot your password?
+          </a>
+      </fieldset>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <img width="16" height="16" class="loading hide pull-left margin-top-1"
+       alt="loading" src="https://virustotalcloud.appspot.com/static/img/wait.gif"/>
+  <a class="btn cancel" href="/en/">
+    Cancel
+  </a>
+  <a id="btn-sign-in" class="btn btn-primary"
+     href="javascript:signin('')">
+    Sign in
+  </a>
+</div>
+</div>
+
+
+  
+  
+
+</body>
+</html>

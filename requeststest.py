@@ -1,21 +1,20 @@
+import re
+
 __author__ = 'liebesu'
 import requests
 s=requests.session()
-username = 'polydata123'
+username = 'polydata1231'
 password = 'polydata'
 url='https://www.virustotal.com/en/account/signin/'
-csrfmiddlewaretoken = s.get(url)
-headers ={
-    'Referer':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36',
-    'Authorization':'access_token myToken',
-    'content-type': 'application/json'
-          }
+headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "application/json, text/javascript, */*; q=0.01", "Referer": url}
 data={'next': '/en/' ,'username': username, 'password': password}
 r = s.post(url,data=data,headers=headers,allow_redirects=False)
-#csrfmiddlewaretoken=r.cookies['csrfmiddlewaretoken']
 print r.cookies
 print r.status_code
 apiurl='https://www.virustotal.com/en/user/polydata123/apikey/'
 r = s.get(apiurl,allow_redirects=False)
 print r.status_code
-print r.text.encode('ascii', 'ignore')
+page = r.text.encode('ascii', 'ignore')
+key=re.search(r'<center>(.+?)</center>',page)
+key=key.group().replace('<center>','').replace('</center>','')
+print key
