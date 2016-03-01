@@ -14,5 +14,8 @@ def read_conf():
     reg_premail=config.get("reg_info","premail")
     reg_password=config.get("reg_info","password")
     numkey=config.get("numkey","num")
+    mail_user=config.get("mail_info","username")
+    mail_pass=config.get("mail_info","password")
 
-    return datebaseip,datebaseuser,datebasepsw,datebasename,datebasetable,reg_username,reg_premail,reg_password,numkey
+    return datebaseip,datebaseuser,datebasepsw,datebasename,datebasetable,reg_username,reg_premail,reg_password,numkey,\
+           mail_user,mail_pass

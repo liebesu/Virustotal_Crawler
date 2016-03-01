@@ -25,8 +25,6 @@ class Producer:
 
         }
 
-    #generate request token and string format cookie
-
     def post(self, params):
         print 'create user', params['email']
         try:
@@ -35,7 +33,6 @@ class Producer:
                          body=urllib.urlencode(params), headers=self.headers)
             response = conn.getresponse()
             HTML=response.read()
-            #<ul class="errorlist"><li>
             error=re.search('<ul\s+?class="errorlist"><li>(?P<errorlist>.+?)</li></ul>',HTML)
             if error:
                 error1=error.group("errorlist")
@@ -43,10 +40,6 @@ class Producer:
             else:
                 print "creat Scucess:",params['email']
                 self.db_sql(params)
-            '''if "Welcome to the VirusTotal community" in str(response.read):
-                print 'user', params['email'], 'successfully created'
-            else:
-                print '!!! error while create user', params['email'], '!!!'''''
             conn.close()
         except:
             time.sleep(5)
@@ -55,7 +48,6 @@ class Producer:
                          body=urllib.urlencode(params), headers=self.headers)
             response = conn.getresponse()
             HTML=response.read()
-            #<ul class="errorlist"><li>
             error=re.search('<ul\s+?class="errorlist"><li>(?P<errorlist>.+?)</li></ul>',HTML)
             if error:
                 error1=error.group("errorlist")
@@ -63,10 +55,6 @@ class Producer:
             else:
                 print "creat Scucess:",params['email']
                 self.db_sql(params)
-            '''if "Welcome to the VirusTotal community" in str(response.read):
-                print 'user', params['email'], 'successfully created'
-            else:
-                print '!!! error while create user', params['email'], '!!!'''''
             conn.close()
 
 
