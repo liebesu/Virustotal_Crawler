@@ -17,5 +17,4 @@ def read_conf():
     mail_user=config.get("mail_info","username")
     mail_pass=config.get("mail_info","password")
 
-    return datebaseip,datebaseuser,datebasepsw,datebasename,datebasetable,reg_username,reg_premail,reg_password,numkey,\
-           mail_user,mail_pass
+    return datebaseip,datebaseuser,datebasepsw,datebasename,datebasetable,reg_username,reg_premail,reg_password,numkey,mail_user,mail_pass
