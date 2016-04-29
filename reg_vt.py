@@ -1,8 +1,4 @@
 #coding=gbk
-'''
-    my[at]lijiejie.com    http://www.lijiejie.com
-    auto create a large number of box.net accounets
-'''
 import HTMLParser
 import imaplib
 from multiprocessing import Pool
